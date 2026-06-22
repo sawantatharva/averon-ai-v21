@@ -6,6 +6,7 @@ import SecondaryButton from "@/components/primitives/SecondaryButton";
 
 const navItems = [
   { name: "Services", href: "#services" },
+  { name: "Niches", href: "#industries" },
   { name: "Work", href: "#portfolio" },
   { name: "About Us", href: "#about" },
   { name: "Difference", href: "#difference" },
@@ -39,12 +40,12 @@ export default function Header() {
             />
           </Link>
 
-          <nav className="hidden animate-fade-in items-center gap-5 rounded-full border border-white/20 bg-white/10 px-7 py-3 shadow-[var(--shadow-nav)] backdrop-blur-2xl xl:flex 2xl:gap-7 2xl:px-9 2xl:py-3.5">
+          <nav className="hidden animate-fade-in min-h-11 items-center gap-5 rounded-full glass-surface glass-surface-hover px-7 py-3.5 shadow-[var(--shadow-nav)] xl:flex sm:px-8 2xl:gap-7">
             {navItems.map((item, i) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="nav-item focus-ring animate-fade-up rounded-sm opacity-0 transition-transform duration-300 hover:scale-[1.05]"
+                className="focus-ring animate-fade-up rounded-sm font-heading text-sm font-medium text-white/70 opacity-0 transition-all duration-300 hover:scale-[1.05] hover:text-white sm:text-base"
                 style={{ animationDelay: `${0.15 + i * 0.08}s` }}
               >
                 {item.name}

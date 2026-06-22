@@ -200,7 +200,7 @@ export default function Industries({ id }: { id?: string }) {
           <div className="grid lg:grid-cols-[minmax(0,15.5rem)_1fr] xl:grid-cols-[minmax(0,16.5rem)_1fr]">
             {/* Desktop industry selector */}
             <div
-              className="hidden flex-col gap-1 border-b border-white/10 bg-white/[0.02] p-3 lg:flex lg:border-b-0 lg:border-r"
+              className="hidden flex-col gap-1 border-b border-white/10 bg-black/30 p-3 lg:flex lg:border-b-0 lg:border-r lg:border-white/10"
               role="tablist"
               aria-label="Industries"
             >
@@ -217,17 +217,11 @@ export default function Industries({ id }: { id?: string }) {
                       "focus-ring rounded-xl border px-3.5 py-2.5 text-left transition-all duration-300",
                       isActive
                         ? "border-accent/40 bg-accent/10 text-accent shadow-[var(--shadow-glow-accent)] ring-1 ring-accent/25"
-                        : "border-transparent text-white/55 hover:border-white/10 hover:bg-white/[0.05] hover:text-white/90"
+                        : "border-transparent text-white/70 hover:border-white/10 hover:bg-black/40 hover:text-white"
                     )}
                   >
-                    <span className="block font-heading text-sm">{item.title}</span>
-                    <span
-                      className={cn(
-                        "mt-0.5 block text-xs leading-snug",
-                        isActive ? "text-accent/75" : "text-white/40"
-                      )}
-                    >
-                      {item.tagline}
+                    <span className="block font-heading text-sm leading-snug">
+                      {item.title}
                     </span>
                   </button>
                 );
@@ -238,7 +232,7 @@ export default function Industries({ id }: { id?: string }) {
             <div className="min-w-0">
               {/* Mobile / tablet pills */}
               <div
-                className="flex gap-2 overflow-x-auto border-b border-white/10 p-3 scrollbar-none snap-x snap-mandatory sm:p-4 lg:hidden"
+                className="flex gap-2 overflow-x-auto border-b border-white/10 bg-black/50 p-3 scrollbar-none snap-x snap-mandatory sm:p-4 lg:hidden"
                 role="tablist"
                 aria-label="Industries"
               >
@@ -254,8 +248,8 @@ export default function Industries({ id }: { id?: string }) {
                       className={cn(
                         "focus-ring min-h-11 max-w-[11rem] shrink-0 snap-center truncate rounded-full border px-3.5 py-2 font-heading text-xs transition-all duration-300 sm:max-w-[13rem] sm:px-4 sm:text-sm",
                         isActive
-                          ? "border-accent/45 bg-accent/12 text-accent shadow-[var(--shadow-glow-accent)]"
-                          : "border-white/10 bg-white/5 text-white/60 active:scale-95"
+                          ? "border-accent/45 bg-accent/20 text-accent shadow-[var(--shadow-glow-accent)]"
+                          : "border-white/15 bg-black/70 text-white/75 active:scale-95 hover:border-white/25 hover:bg-black/85"
                       )}
                       title={item.title}
                     >
