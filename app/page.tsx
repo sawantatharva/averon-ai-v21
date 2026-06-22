@@ -3,56 +3,32 @@ import Hero from "@/components/sections/Hero";
 import PoweredBy from "@/components/sections/PoweredBy";
 import AboutUs from "@/components/sections/AboutUs";
 import Services from "@/components/sections/Services";
+import Industries from "@/components/sections/Industries";
 import Difference from "@/components/sections/Difference";
 import HowItWorks from "@/components/sections/HowItWorks";
+import Portfolio from "@/components/sections/Portfolio";
 import FAQs from "@/components/sections/FAQs";
 import CTA from "@/components/sections/CTA";
 import Footer from "@/components/sections/Footer";
 import BackToTop from "@/components/ui/BackToTop";
 import Chatbot from "@/components/Chatbot";
 
-/* Main landing page composition */
 export default function Home() {
   return (
-    <main className="bg-black text-white w-full overflow-x-hidden">
+    <main className="w-full overflow-x-hidden bg-bg-primary text-white">
       <Header />
-
-      {/* Section anchors */}
-      <div id="hero">
-        <Hero />
-      </div>
-
-      <div id="poweredby">
-        <PoweredBy />
-      </div>
-
-      <div id="about">
-        <AboutUs />
-      </div>
-
-      <div id="services">
-        <Services />
-      </div>
-
-      <div id="difference">
-        <Difference />
-      </div>
-
-      <div id="howitworks">
-        <HowItWorks />
-      </div>
-
-      <div id="faqs">
-        <FAQs />
-      </div>
-
-      <div id="cta">
-        <CTA />
-      </div>
-
+      <Hero id="hero" />
+      <PoweredBy id="poweredby" />
+      <AboutUs id="about" />
+      <Services id="services" />
+      <Industries id="industries" />
+      <Difference id="difference" />
+      <HowItWorks id="howitworks" />
+      <Portfolio id="portfolio" />
+      <FAQs id="faqs" />
+      <CTA id="cta" />
       <Footer />
       <BackToTop />
-
       <Chatbot />
     </main>
   );

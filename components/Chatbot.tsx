@@ -2,23 +2,33 @@
 
 import { useEffect } from "react";
 
+const CHAT_WEBHOOK_URL = "/api/chat";
+
 export default function Chatbot() {
   useEffect(() => {
-    // 1) Add the CDN stylesheet first
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css";
-    document.head.appendChild(link);
+    if (process.env.NEXT_PUBLIC_CHAT_ENABLED === "false") return;
 
-    // 2) After the stylesheet finishes loading, inject our :root overrides,
-    //    then boot the widget. This guarantees our vars win the cascade.
-    const onLoad = () => {
+    let cancelled = false;
+    let cleanupWidget: (() => void) | undefined;
+
+    const bootChat = async () => {
+      const health = await fetch(CHAT_WEBHOOK_URL, { method: "HEAD" });
+      if (cancelled || health.status === 503) return;
+      // 1) Add the CDN stylesheet first
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href = "https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css";
+      document.head.appendChild(link);
+
+      // 2) After the stylesheet finishes loading, inject our :root overrides,
+      //    then boot the widget. This guarantees our vars win the cascade.
+      const onLoad = () => {
       // Inject our CSS variables AFTER the CDN CSS
       const style = document.createElement("style");
       style.setAttribute("data-n8n-overrides", "true");
       style.textContent = `
         :root {
-          --chat--color-primary: #0A84FF;
+          --chat--color-primary: var(--color-accent);
           --chat--color-primary-shade-50: #0066CC;
           --chat--color-primary-shade-100: #004C99;
           --chat--color-secondary: #1B1F2A;
@@ -38,7 +48,7 @@ export default function Chatbot() {
           --chat--window--height: 600px;
           --chat--header-height: auto;
           --chat--header--padding: var(--chat--spacing);
-          --chat--header--background: linear-gradient(90deg, #0A84FF, #004C99);
+          --chat--header--background: linear-gradient(90deg, var(--color-accent), #004C99);
           --chat--header--color: var(--chat--color-white);
           --chat--header--border-top: none;
           --chat--header--border-bottom: none;
@@ -77,34 +87,35 @@ export default function Chatbot() {
       script.textContent = `
         import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
         createChat({
-          webhookUrl: 'https://krithikanair.app.n8n.cloud/webhook/d052c635-69c0-4e69-ae2b-12dc9fc5142b/chat',
+          webhookUrl: '${CHAT_WEBHOOK_URL}',
           // If you see default styles overriding again, set this to false:
           // useGlobalStyles: false
         });
       `;
       document.body.appendChild(script);
 
-      // cleanup
-      return () => {
-        style.remove();
-        script.remove();
+        cleanupWidget = () => {
+          style.remove();
+          script.remove();
+        };
+        return cleanupWidget;
       };
+
+      if (link.sheet) {
+        cleanupWidget = onLoad();
+      } else {
+        link.addEventListener("load", () => {
+          cleanupWidget = onLoad();
+        }, { once: true });
+      }
     };
 
-    if (link.sheet) {
-      // already loaded (rare)
-      const cleanup = onLoad();
-      return () => {
-        document.head.removeChild(link);
-        cleanup?.();
-      };
-    } else {
-      link.addEventListener("load", onLoad, { once: true });
-      return () => {
-        link.removeEventListener("load", onLoad);
-        document.head.removeChild(link);
-      };
-    }
+    void bootChat();
+
+    return () => {
+      cancelled = true;
+      cleanupWidget?.();
+    };
   }, []);
 
   return null;

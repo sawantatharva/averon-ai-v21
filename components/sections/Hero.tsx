@@ -1,161 +1,58 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import SectionShell from "@/components/primitives/SectionShell";
+import PrimaryButton from "@/components/primitives/PrimaryButton";
+import SecondaryButton from "@/components/primitives/SecondaryButton";
+import { LightingOrb } from "@/components/primitives/LightingEffects";
+
 const HeroCanvas = dynamic(() => import("../3d/HeroCanvas"), { ssr: false });
 
 export default function Hero({ id }: { id?: string }) {
   return (
-    <section
+    <SectionShell
       id={id}
-      className="
-        relative w-full min-h-screen bg-[#05070A]
-        flex items-center 
-        px-5 sm:px-8 md:px-12 lg:px-14 xl:px-20       /* ✅ FIXED */
-        pt-32 sm:pt-36 md:pt-40 lg:pt-44 xl:pt-40 
-        pb-20 sm:pb-24 md:pb-28 lg:pb-32
-        overflow-hidden
-      "
+      padding="hero"
+      lighting={
+        <>
+          <LightingOrb className="inset-0 bg-bg-primary" />
+          <LightingOrb className="right-[-45%] top-[15%] h-[700px] w-[700px] bg-accent/14 blur-[240px] sm:right-[-35%] sm:h-[900px] sm:w-[900px] sm:blur-[300px] md:right-[-25%] md:h-[1100px] md:w-[1100px] lg:right-[-20%] lg:h-[1400px] lg:w-[1400px] lg:blur-[360px]" />
+          <LightingOrb className="left-[-15%] top-[35%] h-[900px] w-[900px] bg-white/10 blur-[260px] sm:left-0 sm:h-[1200px] sm:w-[1200px] md:left-[5%] md:h-[1400px] md:w-[1400px] lg:h-[1600px] lg:w-[1600px] lg:blur-[380px]" />
+          <LightingOrb className="bottom-[-55%] left-1/2 h-[800px] w-[1500px] -translate-x-1/2 bg-black/50 blur-[280px] md:bottom-[-40%] md:h-[1200px] md:w-[2000px] md:blur-[380px]" />
+        </>
+      }
     >
-      {/* Base Layer */}
-      <div className="absolute inset-0 bg-[#05070A]" />
-
-      {/* Blue Glow */}
-      <div
-        className="
-          pointer-events-none absolute
-          right-[-45%] sm:right-[-35%] md:right-[-25%] lg:right-[-20%]
-          top-[15%]
-          w-[700px] sm:w-[900px] md:w-[1100px] lg:w-[1400px]
-          h-[700px] sm:h-[900px] md:h-[1100px] lg:h-[1400px]
-          bg-[#4DA3FF]/14 blur-[240px] sm:blur-[300px] lg:blur-[360px]
-        "
-      />
-
-      {/* White Glow */}
-      <div
-        className="
-          pointer-events-none absolute 
-          left-[-15%] sm:left-[0%] md:left-[5%]
-          top-[35%]
-          w-[900px] sm:w-[1200px] md:w-[1400px] lg:w-[1600px]
-          h-[900px] sm:h-[1200px] md:h-[1400px] lg:h-[1600px]
-          bg-white/10 blur-[260px] sm:blur-[320px] lg:blur-[380px]
-        "
-      />
-
-      {/* Bottom Vignette */}
-      <div
-        className="
-          pointer-events-none absolute
-          bottom-[-55%] md:bottom-[-40%]
-          left-1/2 -translate-x-1/2
-          w-[1500px] md:w-[2000px]
-          h-[800px] md:h-[1200px]
-          bg-black/50 blur-[280px] md:blur-[380px]
-        "
-      />
-
-      {/* Main Content */}
-      <div
-        className="
-          relative z-10 w-full max-w-7xl mx-auto
-          grid grid-cols-1 lg:grid-cols-2 
-          gap-12 sm:gap-14 lg:gap-16
-          items-center
-        "
-      >
-        {/* LEFT - TEXT BLOCK */}
+      <div className="container-section relative z-10 grid grid-cols-1 items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12">
         <div className="max-w-[620px]">
-          {/* Pre-Headline */}
-          <p
-            className="
-              font-body text-[#4DA3FF]
-              text-xs sm:text-sm
-              tracking-[0.18em] uppercase
-              mb-3 sm:mb-4
-            "
-          >
+          <p className="text-eyebrow mb-3 sm:mb-4">
             Built Around Your Workflow
           </p>
 
-          {/* Main Headline */}
-          <h1
-            className="
-              font-heading 
-              text-[32px] sm:text-[38px] md:text-[50px] 
-              lg:text-[52px] xl:text-[60px]      /* ✅ FIXED */
-              leading-[1.15] sm:leading-[1.1] md:leading-[1.08] lg:leading-[1.05]
-              tracking-tight text-white
-            "
-          >
+          <h1 className="text-h1">
             AI That Works the Way <br />
-            <span className="text-[#66B8FF]">Your Business Works</span>
+            <span className="text-accent-light">Your Business Works</span>
           </h1>
 
-          {/* Description */}
-          <p
-            className="
-              font-body text-gray-300
-              mt-5 sm:mt-6
-              text-[15px] sm:text-[16px] md:text-[17px]
-              leading-relaxed
-            "
-          >
+          <p className="text-body-lg mt-5 sm:mt-6">
             We build personalised AI workflows, assistants, and automation
             systems that integrate directly into your tools — reducing manual
             work and helping your business operate up to 10× faster.
           </p>
 
-          {/* CTAs */}
-          <div
-            className="
-              mt-8 sm:mt-10 
-              flex flex-col sm:flex-row 
-              gap-4 sm:gap-5
-            "
-          >
-            <a
-              href="https://tally.so/r/kdaXJj"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                font-body px-7 sm:px-8 py-3.5 rounded-full
-                bg-white text-black font-medium
-                text-sm sm:text-base
-                shadow-[0_0_25px_rgba(255,255,255,0.18)]
-                hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]
-                hover:scale-[1.04] transition-all
-              "
-            >
+          <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
+            <PrimaryButton href="https://tally.so/r/kdaXJj" external>
               Book a Call →
-            </a>
-
-            <a
-              href="https://wa.me/918454842028"
-              className="
-                font-body px-7 sm:px-8 py-3.5 rounded-full
-                border border-white/20 text-white font-medium
-                text-sm sm:text-base
-                hover:bg-white/10 hover:scale-[1.04] transition-all
-              "
-            >
+            </PrimaryButton>
+            <SecondaryButton href="https://wa.me/918454842028" external>
               Connect on WhatsApp →
-            </a>
+            </SecondaryButton>
           </div>
         </div>
 
-        {/* RIGHT - 3D CANVAS */}
-        <div
-          className="
-            relative w-full
-            h-[260px] sm:h-80 md:h-[420px] 
-            lg:h-[460px] xl:h-[560px]          /* ✅ FIXED */
-            max-w-[620px] mx-auto
-          "
-        >
+        <div className="relative mx-auto h-[260px] w-full max-w-[620px] sm:h-80 md:h-[420px] lg:h-[460px] xl:h-[560px]">
           <HeroCanvas />
         </div>
       </div>
-    </section>
+    </SectionShell>
   );
 }

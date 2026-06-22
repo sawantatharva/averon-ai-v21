@@ -14,8 +14,8 @@ type HeroModelProps = {
 
 export default function HeroModel({
   scale = 2.2,
-  colorA = "#BBDEF2",
-  colorB = "#D1AAD7",
+  colorA = "#bbdef2",
+  colorB = "#d1aad7",
 }: HeroModelProps) {
   const group = useRef<Group>(null!);
 

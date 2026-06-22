@@ -1,86 +1,59 @@
 "use client";
 
 import BackButton from "@/components/BackButton";
+import SectionShell from "@/components/primitives/SectionShell";
 
 export default function PrivacyPolicy() {
   return (
-    <section className="min-h-screen bg-[#05070A] text-white pt-12 pb-24 px-6">
-
-      {/* Back Button */}
-      <div className="max-w-7xl mx-auto">
+    <SectionShell padding="none" className="min-h-screen pb-24 pt-[calc(4rem+env(safe-area-inset-top))]">
+      <div className="container-section">
         <BackButton />
       </div>
 
-      <div className="h-8" />
+      <div className="container-narrow mt-8 md:mt-10">
+        <h1 className="text-h1 mb-3">Privacy Policy</h1>
+        <p className="text-body-sm mb-12">Last updated: November 10, 2025</p>
 
-      <div className="max-w-4xl mx-auto">
-
-        {/* Heading */}
-        <h1 className="font-heading text-4xl md:text-5xl text-white mb-3">
-          Privacy Policy
-        </h1>
-
-        <p className="font-body text-white/60 mb-12">
-          Last updated: November 10, 2025
-        </p>
-
-        {/* CONTENT */}
-        <div className="space-y-12 font-body text-white/80 leading-relaxed">
-
-          {/* 1 — INTRO */}
+        <div className="space-y-10 font-body leading-relaxed md:space-y-12">
           <section>
-            <h2 className="text-2xl font-heading text-white mb-4">
-              1. Introduction
-            </h2>
-            <p className="text-[16px] leading-[1.7]">
+            <h2 className="text-h3 mb-4">1. Introduction</h2>
+            <p className="text-body">
               At Averon AI, we value your privacy and are committed to
               protecting your personal data. This Privacy Policy explains how
               we collect, use, and safeguard your information.
             </p>
           </section>
 
-          {/* 2 — DATA WE COLLECT */}
           <section>
-            <h2 className="text-2xl font-heading text-white mb-4">
-              2. Information We Collect
-            </h2>
-            <ul className="list-disc pl-5 space-y-2 text-[16px] leading-[1.7]">
+            <h2 className="text-h3 mb-4">2. Information We Collect</h2>
+            <ul className="text-body list-disc space-y-2 pl-5">
               <li>Contact details (name, email, phone)</li>
               <li>Business workflow information to improve automation</li>
               <li>Technical data such as browser type, device info, and cookies</li>
             </ul>
           </section>
 
-          {/* 3 — HOW WE USE YOUR DATA */}
           <section>
-            <h2 className="text-2xl font-heading text-white mb-4">
-              3. How We Use Your Information
-            </h2>
-            <ul className="list-disc pl-5 space-y-2 text-[16px] leading-[1.7]">
+            <h2 className="text-h3 mb-4">3. How We Use Your Information</h2>
+            <ul className="text-body list-disc space-y-2 pl-5">
               <li>To deliver AI automations and consulting services</li>
               <li>To improve workflow performance and overall user experience</li>
               <li>To communicate regarding updates, support, and insights</li>
             </ul>
           </section>
 
-          {/* 4 — SECURITY */}
           <section>
-            <h2 className="text-2xl font-heading text-white mb-4">
-              4. Data Security
-            </h2>
-            <p className="text-[16px] leading-[1.7]">
+            <h2 className="text-h3 mb-4">4. Data Security</h2>
+            <p className="text-body">
               We implement industry-standard measures including encryption,
               access control, and secure data handling practices to protect
               your information from unauthorized access or misuse.
             </p>
           </section>
 
-          {/* ✅ 5 — THIRD-PARTY SERVICES (Your added section) */}
           <section>
-            <h2 className="text-2xl font-heading text-white mb-4">
-              5. Third-Party Services
-            </h2>
-            <p className="text-[16px] leading-[1.7]">
+            <h2 className="text-h3 mb-4">5. Third-Party Services</h2>
+            <p className="text-body">
               We may integrate with third-party tools and services (such as CRMs,
               automation platforms, analytics, or messaging APIs). These
               services operate under their own privacy policies, which we
@@ -89,22 +62,16 @@ export default function PrivacyPolicy() {
             </p>
           </section>
 
-          {/* ✅ 6 — CONTACT US (Your added section) */}
           <section>
-            <h2 className="text-2xl font-heading text-white mb-4">
-              6. Contact Us
-            </h2>
-            <p className="text-[16px] leading-[1.7]">
+            <h2 className="text-h3 mb-4">6. Contact Us</h2>
+            <p className="text-body">
               For privacy-related questions, data removal requests, or any other
               concerns, please email us at{" "}
-              <span className="text-[#4DA3FF]">
-                privacy@averonai.com
-              </span>.
+              <span className="text-accent">privacy@averonai.com</span>.
             </p>
           </section>
-
         </div>
       </div>
-    </section>
+    </SectionShell>
   );
 }
