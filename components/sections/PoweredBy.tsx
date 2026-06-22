@@ -26,7 +26,7 @@ export default function PoweredBy({ id }: { id?: string }) {
         </>
       }
     >
-      <div className="container-section relative">
+      <div className="container-section relative min-w-0">
         <p className="mb-6 text-center font-heading text-sm tracking-wide text-text-subtle sm:mb-8 sm:text-base">
           Powered by the world&apos;s leading AI Models & Automation Platforms
         </p>

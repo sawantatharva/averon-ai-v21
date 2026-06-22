@@ -15,7 +15,7 @@ import Chatbot from "@/components/Chatbot";
 
 export default function Home() {
   return (
-    <main className="w-full overflow-x-hidden bg-bg-primary text-white">
+    <main className="w-full overflow-x-clip bg-bg-primary text-white">
       <Header />
       <Hero id="hero" />
       <PoweredBy id="poweredby" />

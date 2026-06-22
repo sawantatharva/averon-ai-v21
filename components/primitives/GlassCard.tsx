@@ -31,7 +31,7 @@ export default function GlassCard({
         "glass-surface rounded-3xl shadow-[var(--shadow-glass)]",
         rounded === "lg" && "rounded-2xl",
         paddingClasses[padding],
-        hover && "glass-surface-hover",
+        hover && "glass-surface-hover focus-within:border-white/20",
         lift && "hover-lift",
         className
       )}

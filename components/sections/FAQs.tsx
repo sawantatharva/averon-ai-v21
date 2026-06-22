@@ -40,17 +40,21 @@ export default function FAQs({ id }: { id?: string }) {
         </>
       }
     >
-      <div className="container-narrow relative">
+      <div className="container-section relative min-w-0">
         <SectionHeader eyebrow="Need Answers?" title="FAQs" />
 
-        <Accordion type="single" collapsible className="flex flex-col gap-3">
+        <Accordion
+          type="single"
+          collapsible
+          className="mx-auto flex max-w-4xl flex-col gap-3"
+        >
           {faqs.map((f, i) => (
             <AccordionItem
               key={f.q}
               value={`faq-${i}`}
-              className="glass-surface glass-surface-hover rounded-2xl border border-b-0 px-5 shadow-[var(--shadow-glass)] sm:px-6"
+              className="glass-surface glass-surface-hover focus-within:border-white/20 rounded-2xl border border-b-0 px-6 shadow-[var(--shadow-glass)] sm:px-7 md:px-8"
             >
-              <AccordionTrigger className="py-4 text-left font-heading text-base text-white transition-colors hover:no-underline focus-visible:outline-none data-[state=open]:text-accent sm:text-lg md:text-xl">
+              <AccordionTrigger className="py-4 text-left font-heading text-base leading-snug text-white transition-colors hover:no-underline focus-visible:outline-none data-[state=open]:text-accent sm:text-lg">
                 {f.q}
               </AccordionTrigger>
               <AccordionContent className="pb-5 pt-0 text-body md:text-base">

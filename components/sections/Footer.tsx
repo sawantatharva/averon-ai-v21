@@ -10,10 +10,10 @@ export default function Footer({ id }: { id?: string }) {
       id={id}
       as="footer"
       padding="none"
-      className="border-t border-white/10 py-12 md:py-16"
+      className="border-t border-white/10 py-16 md:py-20"
       lighting={<BottomVignette className="inset-0 bottom-[-30%] h-[900px] w-[1600px] bg-black/55 blur-[320px]" />}
     >
-      <div className="container-section relative">
+      <div className="container-section relative min-w-0">
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <Link
             href="/#hero"
@@ -26,13 +26,13 @@ export default function Footer({ id }: { id?: string }) {
           <div className="flex flex-wrap gap-x-6 gap-y-2 font-body text-sm text-text-muted sm:text-base">
             <a
               href="/privacy-policy"
-              className="transition-colors duration-300 hover:text-white"
+              className="inline-flex min-h-11 items-center transition-colors duration-300 hover:text-white"
             >
               Privacy Policy
             </a>
             <a
               href="/terms-and-conditions"
-              className="transition-colors duration-300 hover:text-white"
+              className="inline-flex min-h-11 items-center transition-colors duration-300 hover:text-white"
             >
               Terms & Conditions
             </a>
@@ -46,7 +46,7 @@ export default function Footer({ id }: { id?: string }) {
             {phones.map((phone) => (
               <div key={phone} className="flex items-center gap-2">
                 <PhoneIcon />
-                <a href={`tel:${phone.replace(/-/g, "")}`} className="transition-colors duration-300 hover:text-white">
+                <a href={`tel:${phone.replace(/-/g, "")}`} className="inline-flex min-h-11 items-center transition-colors duration-300 hover:text-white">
                   {phone}
                 </a>
               </div>
@@ -56,7 +56,7 @@ export default function Footer({ id }: { id?: string }) {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-8">
             <div className="flex items-center gap-2">
               <EmailIcon />
-              <a href="mailto:hello@averonai.com" className="transition-colors duration-300 hover:text-white">
+              <a href="mailto:hello@averonai.com" className="inline-flex min-h-11 items-center transition-colors duration-300 hover:text-white">
                 hello@averonai.com
               </a>
             </div>
@@ -67,7 +67,7 @@ export default function Footer({ id }: { id?: string }) {
                 href="https://wa.me/918454842028"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-colors duration-300 hover:text-white"
+                className="inline-flex min-h-11 items-center transition-colors duration-300 hover:text-white"
               >
                 +91-8454842028
               </a>

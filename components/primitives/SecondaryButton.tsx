@@ -25,8 +25,8 @@ export default function SecondaryButton({
   style,
 }: SecondaryButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center gap-2 rounded-full font-medium text-white",
-    "font-body transition-all duration-300 hover-scale focus-ring",
+    "inline-flex min-h-11 items-center justify-center gap-2 rounded-full font-medium text-white",
+    "font-body transition-all duration-300 hover-scale focus-ring active:scale-[0.98]",
     variant === "outline" && "border border-white/20 hover:bg-white/10",
     variant === "glass" &&
       "glass-surface glass-surface-hover font-heading hover:bg-white/10",

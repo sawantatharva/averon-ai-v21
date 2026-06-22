@@ -38,7 +38,7 @@ export default function AboutUs({ id }: { id?: string }) {
         </>
       }
     >
-      <div className="container-section relative mx-auto max-w-6xl">
+      <div className="container-section relative min-w-0">
         <SectionHeader
           align="left"
           eyebrow="Who We Are"
@@ -54,7 +54,7 @@ export default function AboutUs({ id }: { id?: string }) {
             with less manual effort.
           </p>
 
-          <div className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6 md:mt-10">
+          <div className="mt-8 grid grid-cols-1 gap-6 md:mt-10 md:grid-cols-3">
             {values.map((item) => (
               <div key={item.title} className="group text-center">
                 <div className="glass-surface glass-surface-hover mx-auto flex h-16 w-16 items-center justify-center rounded-2xl shadow-[var(--shadow-glow-accent)] transition-transform duration-300 group-hover:scale-105">

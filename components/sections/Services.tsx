@@ -42,14 +42,14 @@ export default function Services({ id }: { id?: string }) {
         </>
       }
     >
-      <div className="container-section relative">
+      <div className="container-section relative min-w-0">
         <SectionHeader
           eyebrow="What We Do"
           title="Services We Provide"
           description="AI systems custom-designed around the way your business actually works."
         />
 
-        <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 md:gap-6 lg:gap-7">
+        <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
           {services.map((srv) => (
             <GlassCard
               key={srv.title}

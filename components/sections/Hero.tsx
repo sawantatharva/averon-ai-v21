@@ -22,8 +22,8 @@ export default function Hero({ id }: { id?: string }) {
         </>
       }
     >
-      <div className="container-section relative z-10 grid grid-cols-1 items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12">
-        <div className="max-w-[620px]">
+      <div className="container-section relative z-10 grid w-full min-w-0 grid-cols-1 items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-12">
+        <div className="min-w-0 w-full max-w-[620px]">
           <p className="text-eyebrow mb-3 sm:mb-4">
             Built Around Your Workflow
           </p>
@@ -39,11 +39,11 @@ export default function Hero({ id }: { id?: string }) {
             work and helping your business operate up to 10× faster.
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
-            <PrimaryButton href="https://tally.so/r/kdaXJj" external>
+          <div className="mt-8 flex w-full flex-col gap-3 sm:mt-10 sm:flex-row sm:gap-4">
+            <PrimaryButton href="https://tally.so/r/kdaXJj" external className="w-full sm:w-auto">
               Book a Call →
             </PrimaryButton>
-            <SecondaryButton href="https://wa.me/918454842028" external>
+            <SecondaryButton href="https://wa.me/918454842028" external className="w-full sm:w-auto">
               Connect on WhatsApp →
             </SecondaryButton>
           </div>

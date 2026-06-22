@@ -1,4 +1,5 @@
 import SectionShell from "@/components/primitives/SectionShell";
+import SectionHeader from "@/components/primitives/SectionHeader";
 import PrimaryButton from "@/components/primitives/PrimaryButton";
 import { AccentGlow, LightingOrb } from "@/components/primitives/LightingEffects";
 
@@ -6,7 +7,6 @@ export default function CTA({ id }: { id?: string }) {
   return (
     <SectionShell
       id={id}
-      className="text-center"
       lighting={
         <>
           <LightingOrb className="left-1/2 top-[15%] h-[1400px] w-[1100px] -translate-x-1/2 bg-white/7 blur-[220px]" />
@@ -15,17 +15,22 @@ export default function CTA({ id }: { id?: string }) {
         </>
       }
     >
-      <div className="container-tight relative">
-        <h2 className="text-h2 mb-4 md:mb-5">Ready to scale with AI?</h2>
+      <div className="container-section relative min-w-0">
+        <div className="mx-auto max-w-2xl text-center">
+          <SectionHeader
+            title="Ready to scale with AI?"
+            description="Automate workflows. Increase conversions. Grow autonomously — powered by AI systems built around your business."
+          />
 
-        <p className="text-body-lg mx-auto mb-8 max-w-2xl md:mb-10">
-          Automate workflows. Increase conversions. Grow autonomously — powered by
-          AI systems built around your business.
-        </p>
-
-        <PrimaryButton href="https://tally.so/r/kdaXJj" external size="lg">
-          Book a Call →
-        </PrimaryButton>
+          <PrimaryButton
+            href="https://tally.so/r/kdaXJj"
+            external
+            size="lg"
+            className="w-full sm:w-auto"
+          >
+            Book a Call →
+          </PrimaryButton>
+        </div>
       </div>
     </SectionShell>
   );

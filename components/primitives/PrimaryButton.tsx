@@ -17,8 +17,8 @@ export default function PrimaryButton({
   size = "default",
 }: PrimaryButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center rounded-full bg-white font-medium text-black",
-    "font-body shadow-[var(--shadow-glow-white)] transition-all duration-300 hover-scale focus-ring",
+    "inline-flex min-h-11 items-center justify-center rounded-full bg-white font-medium text-black",
+    "font-body shadow-[var(--shadow-glow-white)] transition-all duration-300 hover-scale focus-ring active:scale-[0.98]",
     "hover:shadow-[var(--shadow-glow-white-hover)]",
     size === "default" && "px-7 py-3.5 text-sm sm:px-8 sm:text-base",
     size === "lg" && "px-10 py-4 font-heading text-lg",

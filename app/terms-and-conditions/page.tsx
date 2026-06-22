@@ -5,7 +5,7 @@ import SectionShell from "@/components/primitives/SectionShell";
 
 export default function TermsAndConditions() {
   return (
-    <SectionShell padding="none" className="min-h-screen pb-24 pt-[calc(4rem+env(safe-area-inset-top))]">
+    <SectionShell padding="none" className="min-h-screen pb-24 pt-[calc(var(--header-height,5.75rem)+1.5rem+env(safe-area-inset-top))]">
       <div className="container-section">
         <BackButton />
       </div>

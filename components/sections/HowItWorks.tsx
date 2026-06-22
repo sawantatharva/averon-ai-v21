@@ -42,10 +42,10 @@ export default function HowItWorks({ id }: { id?: string }) {
         </>
       }
     >
-      <div className="container-section relative">
+      <div className="container-section relative min-w-0">
         <SectionHeader eyebrow="Step-by-Step" title="How It Works" />
 
-        <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-5">
+        <div className="grid gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
           {steps.map((step) => (
             <GlassCard key={step.num} lift className="group relative">
               <div className="lighting-orb absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent/20 opacity-0 blur-[90px] transition-opacity duration-300 group-hover:opacity-100" />

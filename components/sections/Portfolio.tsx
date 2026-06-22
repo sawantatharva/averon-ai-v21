@@ -145,7 +145,7 @@ export default function Portfolio({ id }: { id?: string }) {
         </>
       }
     >
-      <div className="container-section relative">
+      <div className="container-section relative min-w-0">
         <SectionHeader
           eyebrow="Proof in Practice"
           title="Selected Work"
@@ -163,7 +163,7 @@ export default function Portfolio({ id }: { id?: string }) {
             transition: tilt.x === 0 && tilt.y === 0 ? "transform 0.6s ease-out" : "transform 0.1s ease-out",
           }}
         >
-          <div className="relative aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-[21/9]">
+          <div className="relative aspect-[4/3] w-full sm:aspect-[16/10] md:aspect-[21/9]">
             {projects.map((project, i) => (
               <div
                 key={project.key}
@@ -192,7 +192,7 @@ export default function Portfolio({ id }: { id?: string }) {
             <span
               key={`num-${active.key}`}
               className={cn(
-                "pointer-events-none absolute right-4 top-2 font-heading text-[5rem] leading-none text-white/[0.06] sm:right-8 sm:top-4 sm:text-[7rem] lg:text-[9rem]",
+                "pointer-events-none absolute right-4 top-2 font-heading text-[4rem] leading-none text-white/[0.06] sm:right-6 sm:top-3 sm:text-[5.5rem] md:text-[6.5rem]",
                 isTransitioning && "portfolio-reveal"
               )}
               aria-hidden="true"
@@ -200,13 +200,13 @@ export default function Portfolio({ id }: { id?: string }) {
               {String(activeIndex + 1).padStart(2, "0")}
             </span>
 
-            <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-7 md:p-9 lg:p-10">
-              <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+            <div className="absolute inset-0 flex flex-col justify-end p-5 sm:p-7 md:p-8">
+              <div className="flex flex-col gap-4 sm:gap-5 lg:flex-row lg:items-end lg:justify-between lg:gap-6">
                 <div
                   key={active.key}
-                  className={cn("max-w-2xl", isTransitioning && "portfolio-reveal")}
+                  className={cn("min-w-0 flex-1 lg:max-w-2xl", isTransitioning && "portfolio-reveal")}
                 >
-                  <div className="mb-3 flex flex-wrap items-center gap-2">
+                  <div className="mb-2.5 flex flex-wrap items-center gap-2 sm:mb-3">
                     <span className="rounded-full border border-accent/30 bg-accent/10 px-3 py-1 font-heading text-[11px] tracking-wide text-accent sm:text-xs">
                       {active.industry}
                     </span>
@@ -215,12 +215,12 @@ export default function Portfolio({ id }: { id?: string }) {
                     </span>
                   </div>
 
-                  <h3 className="text-h2 sm:text-3xl md:text-4xl">
+                  <h3 className="text-h3 break-words sm:text-3xl md:text-4xl">
                     {active.title}
                   </h3>
-                  <p className="text-body mt-2 max-w-xl sm:mt-3">{active.summary}</p>
+                  <p className="text-body mt-2 line-clamp-2 max-w-xl sm:mt-2.5">{active.summary}</p>
 
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="mt-3 flex flex-wrap gap-2 sm:mt-3.5">
                     {active.stack.map((tool) => (
                       <span
                         key={tool}
@@ -235,17 +235,17 @@ export default function Portfolio({ id }: { id?: string }) {
                 <div
                   key={`metric-${active.key}`}
                   className={cn(
-                    "glass-surface shrink-0 rounded-2xl border border-white/10 p-4 sm:p-5 lg:min-w-[160px]",
+                    "glass-surface w-full shrink-0 rounded-2xl border border-white/10 p-5 sm:p-6 lg:w-[11.5rem] xl:w-[12.5rem]",
                     isTransitioning && "portfolio-reveal"
                   )}
                 >
                   <p className="font-heading text-3xl text-accent sm:text-4xl">
                     {active.metric}
                   </p>
-                  <p className="text-body-sm mt-1 text-text-muted">
+                  <p className="text-body-sm mt-0.5 text-text-muted">
                     {active.metricLabel}
                   </p>
-                  <p className="text-body-sm mt-3 border-t border-white/10 pt-3">
+                  <p className="text-body-sm mt-2.5 line-clamp-2 border-t border-white/10 pt-2.5">
                     {active.outcome}
                   </p>
                 </div>
@@ -262,14 +262,14 @@ export default function Portfolio({ id }: { id?: string }) {
         </div>
 
         {/* Film-strip selector */}
-        <div className="relative mt-5 sm:mt-6">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-gradient-to-r from-bg-primary to-transparent sm:w-12" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-gradient-to-l from-bg-primary to-transparent sm:w-12" />
+        <div className="relative mt-8 md:mt-10">
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-6 bg-gradient-to-r from-bg-primary to-transparent md:hidden" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-6 bg-gradient-to-l from-bg-primary to-transparent md:hidden" />
 
           <div
             role="tablist"
             aria-label="Portfolio projects"
-            className="flex gap-3 overflow-x-auto pb-1 scrollbar-none snap-x snap-mandatory sm:gap-4"
+            className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-1 scrollbar-none sm:gap-4 md:grid md:grid-cols-5 md:overflow-visible md:pb-0"
           >
             {projects.map((project, i) => {
               const isActive = i === activeIndex;
@@ -281,13 +281,14 @@ export default function Portfolio({ id }: { id?: string }) {
                   aria-selected={isActive}
                   onClick={() => selectProject(i)}
                   className={cn(
-                    "group/reel relative shrink-0 snap-center overflow-hidden rounded-xl border text-left transition-all duration-500 ease-out",
+                    "group/reel focus-ring relative shrink-0 snap-center overflow-hidden rounded-xl border text-left transition-[border-color,box-shadow,opacity] duration-300",
+                    "w-[8rem] sm:w-[8.25rem] md:w-full",
                     isActive
-                      ? "w-[200px] border-accent/40 shadow-[var(--shadow-glow-accent)] sm:w-[240px] md:w-[280px]"
-                      : "w-[120px] border-white/10 opacity-70 hover:w-[140px] hover:border-white/20 hover:opacity-100 sm:w-[140px] sm:hover:w-[160px]"
+                      ? "border-accent/40 opacity-100 shadow-[var(--shadow-glow-accent)]"
+                      : "border-white/10 opacity-70 hover:border-white/20 hover:opacity-100"
                   )}
                 >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                  <div className="relative aspect-[16/10] w-full overflow-hidden">
                     <img
                       src={project.image}
                       alt=""
@@ -300,7 +301,7 @@ export default function Portfolio({ id }: { id?: string }) {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 
-                    <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <div className="absolute inset-x-0 bottom-0 flex min-h-[2.75rem] flex-col justify-end p-2.5 sm:min-h-[3rem] sm:p-3">
                       <span
                         className={cn(
                           "font-heading text-[10px] tracking-wider text-accent/80",
@@ -309,12 +310,7 @@ export default function Portfolio({ id }: { id?: string }) {
                       >
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <p
-                        className={cn(
-                          "mt-0.5 truncate font-heading text-xs text-white sm:text-sm",
-                          !isActive && "hidden sm:block"
-                        )}
-                      >
+                      <p className="mt-0.5 truncate font-heading text-xs text-white sm:text-sm">
                         {project.title}
                       </p>
                     </div>
@@ -330,9 +326,9 @@ export default function Portfolio({ id }: { id?: string }) {
         </div>
 
         {/* Progress + CTA row */}
-        <div className="mt-6 flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-center sm:gap-6">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1.5">
+        <div className="mt-8 flex w-full flex-col items-stretch justify-between gap-5 sm:flex-row sm:items-center sm:gap-6">
+          <div className="flex min-w-0 items-center gap-4">
+            <div className="flex items-center gap-0.5 sm:gap-1.5">
               {projects.map((project, i) => (
                 <button
                   key={project.key}
@@ -340,13 +336,17 @@ export default function Portfolio({ id }: { id?: string }) {
                   onClick={() => selectProject(i)}
                   aria-label={`View ${project.title}`}
                   aria-current={i === activeIndex ? "true" : undefined}
-                  className={cn(
-                    "rounded-full transition-all duration-300",
-                    i === activeIndex
-                      ? "h-1.5 w-8 bg-accent"
-                      : "h-1.5 w-1.5 bg-white/25 hover:bg-white/50"
-                  )}
-                />
+                  className="touch-target flex items-center justify-center p-2"
+                >
+                  <span
+                    className={cn(
+                      "block rounded-full transition-all duration-300",
+                      i === activeIndex
+                        ? "h-1.5 w-8 bg-accent"
+                        : "h-1.5 w-1.5 bg-white/25 hover:bg-white/50"
+                    )}
+                  />
+                </button>
               ))}
             </div>
             <span className="text-body-sm text-text-muted">
@@ -355,7 +355,7 @@ export default function Portfolio({ id }: { id?: string }) {
             </span>
           </div>
 
-          <PrimaryButton href="https://tally.so/r/kdaXJj" external>
+          <PrimaryButton href="https://tally.so/r/kdaXJj" external className="w-full sm:w-auto">
             Start Your Project →
           </PrimaryButton>
         </div>

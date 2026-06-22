@@ -22,23 +22,20 @@ export default function SectionHeader({
   return (
     <div
       className={cn(
-        compact ? "mb-8 md:mb-10" : "mb-10 md:mb-12",
+        compact ? "mb-8 md:mb-10" : "mb-8 sm:mb-10 md:mb-12",
         align === "center" && "text-center",
         align === "left" && "text-left",
         className
       )}
     >
       {eyebrow && (
-        <p className={cn("text-eyebrow", compact ? "mb-2" : "mb-3")}>
-          {eyebrow}
-        </p>
+        <p className="text-eyebrow mb-3">{eyebrow}</p>
       )}
-      <h2 className={cn("text-h2", titleClassName)}>{title}</h2>
+      <h2 className={cn("text-h2 text-balance", titleClassName)}>{title}</h2>
       {description && (
         <p
           className={cn(
-            "text-body-lg",
-            compact ? "mt-3" : "mt-4",
+            "text-body-lg mt-4 text-pretty",
             align === "center" && "mx-auto max-w-2xl"
           )}
         >

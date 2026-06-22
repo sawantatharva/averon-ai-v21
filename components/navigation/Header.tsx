@@ -44,7 +44,7 @@ export default function Header() {
               <a
                 key={item.name}
                 href={item.href}
-                className="nav-item animate-fade-up opacity-0 transition-transform duration-300 hover:scale-[1.05]"
+                className="nav-item focus-ring animate-fade-up rounded-sm opacity-0 transition-transform duration-300 hover:scale-[1.05]"
                 style={{ animationDelay: `${0.15 + i * 0.08}s` }}
               >
                 {item.name}
@@ -64,7 +64,7 @@ export default function Header() {
 
           <button
             onClick={() => setOpen(true)}
-            className="flex h-10 w-10 animate-scale-in items-center justify-center rounded-xl glass-surface glass-surface-hover text-lg text-white transition active:scale-95 xl:hidden"
+            className="touch-target flex animate-scale-in items-center justify-center rounded-xl glass-surface glass-surface-hover text-lg text-white transition active:scale-95 xl:hidden"
             style={{ animationDelay: "0.6s" }}
             aria-label="Open menu"
           >
@@ -88,7 +88,7 @@ export default function Header() {
       >
         <button
           onClick={() => setOpen(false)}
-          className="absolute right-5 top-[calc(1.25rem+env(safe-area-inset-top))] flex h-10 w-10 items-center justify-center rounded-xl glass-surface glass-surface-hover text-xl text-white transition active:scale-95 sm:right-7"
+          className="touch-target absolute right-5 top-[calc(1.25rem+env(safe-area-inset-top))] flex items-center justify-center rounded-xl glass-surface glass-surface-hover text-xl text-white transition active:scale-95 sm:right-7"
           aria-label="Close menu"
         >
           ✕
@@ -99,7 +99,7 @@ export default function Header() {
             key={item.name}
             href={item.href}
             onClick={() => setOpen(false)}
-            className="border-b border-white/10 pb-3 font-body text-base text-text-subtle transition duration-300 hover:translate-x-1 hover:text-white sm:pb-4 sm:text-lg md:text-xl"
+            className="focus-ring flex min-h-11 items-center border-b border-white/10 py-2 font-body text-base text-text-subtle transition duration-300 hover:translate-x-1 hover:text-white sm:py-2.5 sm:text-lg md:text-xl"
           >
             {item.name}
           </a>

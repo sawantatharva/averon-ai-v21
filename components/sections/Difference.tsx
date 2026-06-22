@@ -83,66 +83,65 @@ export default function Difference({ id }: { id?: string }) {
         </>
       }
     >
-      <SectionHeader
-        eyebrow="Why Choose Averon"
-        title="Averon's Difference"
-        description="Our systems aren't plug-and-play scripts — they're tailored intelligence built for your exact workflow."
-        className="container-tight relative"
-      />
+      <div className="container-section relative min-w-0">
+        <SectionHeader
+          eyebrow="Why Choose Averon"
+          title="Averon's Difference"
+          description="Our systems aren't plug-and-play scripts — they're tailored intelligence built for your exact workflow."
+        />
 
-      <div className="container-section relative grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-10">
-        <div className="flex flex-col gap-2.5 sm:gap-3">
-          {items.map((item) => {
-            const isActive = item.key === active;
-            return (
-              <button
-                key={item.key}
-                type="button"
-                onClick={() => setActive(item.key)}
-                className={cn(
-                  "focus-ring rounded-xl border px-4 py-3 text-left font-heading text-sm backdrop-blur-xl transition-all duration-300 sm:rounded-2xl sm:px-5 sm:py-3.5 sm:text-base",
-                  isActive
-                    ? "border-accent/40 bg-accent/10 text-accent shadow-[var(--shadow-glow-accent)] ring-1 ring-accent/30"
-                    : "glass-surface glass-surface-hover text-text-subtle hover:text-white"
-                )}
-              >
-                {item.title}
-              </button>
-            );
-          })}
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
+          <div className="flex flex-col gap-2.5 sm:gap-3">
+            {items.map((item) => {
+              const isActive = item.key === active;
+              return (
+                <button
+                  key={item.key}
+                  type="button"
+                  onClick={() => setActive(item.key)}
+                  className={cn(
+                    "focus-ring min-h-11 rounded-xl border px-4 py-3 text-left font-heading text-sm backdrop-blur-xl transition-all duration-300 sm:rounded-2xl sm:px-5 sm:py-3.5 sm:text-base",
+                    isActive
+                      ? "border-accent/40 bg-accent/10 text-accent shadow-[var(--shadow-glow-accent)] ring-1 ring-accent/25"
+                      : "glass-surface glass-surface-hover text-text-subtle hover:text-white"
+                  )}
+                >
+                  {item.title}
+                </button>
+              );
+            })}
+          </div>
+
+          <GlassCard key={selected.key} padding="md" hover={false} className="flex flex-col">
+            <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl glass-surface">
+              <img src={selected.icon} alt="" className="w-7" />
+            </div>
+
+            <h3 className="text-h3">{selected.title}</h3>
+            <p className="text-body-sm mb-4 text-accent">{selected.subtitle}</p>
+            <p className="text-body mb-5">{selected.desc}</p>
+
+            <ul className="space-y-2.5">
+              {selected.bullets.map((b) => (
+                <li key={b} className="flex items-start gap-3">
+                  <span className="mt-[7px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                  <span className="text-body-sm text-text-body">{b}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-6">
+              <span className="inline-flex max-w-full items-center gap-1.5 rounded-full border border-emerald-400/25 bg-emerald-500/10 px-3.5 py-1.5 text-[13px] font-body leading-snug text-emerald-300">
+                <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 shrink-0" aria-hidden="true">
+                  <path d="M12 4l6 6h-4v8h-4v-8H6l6-6z" fill="currentColor" />
+                </svg>
+                {selected.stat}
+              </span>
+            </div>
+          </GlassCard>
         </div>
 
-        <GlassCard key={selected.key} padding="md" hover={false} className="flex flex-col">
-          <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl glass-surface">
-            <img src={selected.icon} alt="" className="w-7" />
-          </div>
-
-          <h3 className="text-h3">{selected.title}</h3>
-          <p className="text-body-sm mb-4 text-accent">{selected.subtitle}</p>
-          <p className="text-body mb-5">{selected.desc}</p>
-
-          <ul className="space-y-2.5">
-            {selected.bullets.map((b) => (
-              <li key={b} className="flex items-start gap-3">
-                <span className="mt-[7px] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                <span className="text-body-sm text-text-body">{b}</span>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-6">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/25 bg-emerald-500/10 px-3.5 py-1.5 text-[13px] font-body text-emerald-300">
-              <svg viewBox="0 0 24 24" className="h-3.5 w-3.5 shrink-0" aria-hidden="true">
-                <path d="M12 4l6 6h-4v8h-4v-8H6l6-6z" fill="currentColor" />
-              </svg>
-              {selected.stat}
-            </span>
-          </div>
-        </GlassCard>
-      </div>
-
-      <div className="container-section relative mt-8 md:mt-10">
-        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4 sm:gap-4">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 md:mt-10">
           {[
             { k: "Delivery", v: "Days–Weeks" },
             { k: "Integrations", v: "Your Stack" },
@@ -151,7 +150,7 @@ export default function Difference({ id }: { id?: string }) {
           ].map((s) => (
             <div
               key={s.k}
-              className="glass-surface glass-surface-hover rounded-full px-4 py-2.5 text-center font-body text-xs text-text-subtle sm:px-6 sm:py-3 sm:text-sm"
+              className="glass-surface glass-surface-hover rounded-full px-3 py-2.5 text-center font-body text-xs leading-snug text-text-subtle sm:px-6 sm:py-3 sm:text-sm"
             >
               <span className="text-text-muted">{s.k}:</span>{" "}
               <span className="text-white">{s.v}</span>
